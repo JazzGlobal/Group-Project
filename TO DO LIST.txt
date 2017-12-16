@@ -1,0 +1,5 @@
+Hey guys, figured I would add this to the GitHub as well. Why not right? Having access to these "lists" from multiple locations will be nice. Make sure you always read these! 
+
+-Debug project and list things that we are unhappy with (bugs, features, format, literally anything) <- This one is for everybody
+
+-Integrate Python scripts to make future debugging easier.
