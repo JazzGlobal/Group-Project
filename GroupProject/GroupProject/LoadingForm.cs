@@ -14,7 +14,6 @@ namespace GroupProject
 {
     public partial class LoadingForm : Form
     {
-        Form1 form;
 
         XmlDocument PreviewDocument; //Used to show preview information. 
         List<XmlDocument> XmlList;
@@ -26,7 +25,6 @@ namespace GroupProject
             closing = true; 
             InitializeComponent();
             MaximizeBox = false;
-            this.form = form;
             FormBorderStyle = FormBorderStyle.FixedDialog;
 
             PopulateListBox();
