@@ -16,16 +16,27 @@ namespace GroupProject
     {
 
         InformationInput informationInputForm;
-        LoadingForm loadingForm; 
+        LoadingForm loadingForm;
+        public static bool DEBUGGING = true; 
 
         public Form1()
         {
             Directory.SetCurrentDirectory(Directory.GetCurrentDirectory() + "\\Material Lists\\");
+
             InitializeComponent();
             Name = "Material List Builder";
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MainForm = this;
+
+            if (DEBUGGING)
+            {          
+                
+                StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//ScriptInformation.txt");
+                sw.WriteLine(Directory.GetCurrentDirectory());
+                sw.Close();
+            }
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {

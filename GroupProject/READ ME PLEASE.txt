@@ -1,0 +1,4 @@
+This program saves .XML files. Look in the bin\debug\Material Lists directory for these files. 
+Also: Make sure to check out the "button1_Click" event in the Material List Builder form. It's a fun piece of code!
+I have included a file named 'Carver.xml'. It was made using our project and will help you test the program. 
+Feel free to delete it and start over!
