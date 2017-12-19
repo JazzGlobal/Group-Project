@@ -3,8 +3,15 @@
 #Use this script if, and only if, clearing the Material List directory is desired.
 
 import os
+from sys import argv
 
-print os.getcwd()
+script, filename = argv
+myfile = open(filename)
+newdir = myfile.readline()
+os.chdir(newdir.rstrip())
+myfile.close()
 
-def SetDirectory(path):
-    os.chdir(path)
+dirPath = os.getcwd()
+fileList = os.listdir(dirPath)
+for fileName in fileList:
+    os.remove(dirPath+"/"+fileName)
