@@ -37,9 +37,13 @@ namespace GroupProject
         }
         private void WriteDebugTools()
         {
+            
             //Creates new directory (Debug Tools) on users desktop. 
+            var indent = new string(' ', 1 * 4);
+
             string newdir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//DebugTools";
             Directory.CreateDirectory(newdir);
+            string maindir = Directory.GetCurrentDirectory();
             sw = new StreamWriter(newdir + "//ScriptInformation.txt");
             sw.WriteLine(Directory.GetCurrentDirectory());
             sw.Close();
@@ -47,19 +51,38 @@ namespace GroupProject
 
             //Writes DeleteAllLists.py script. 
             sw = new StreamWriter(newdir + "//DeleteAllLists.py");
-            string s = Directory.GetCurrentDirectory();
             sw.WriteLine("import os");
             //sw.WriteLine("from sys import argv");
             //sw.WriteLine("script, filename = argv");
             //sw.WriteLine("myfile = open(filename)");
-            sw.WriteLine("newdir = " + "r" + "\"" + s + "\"");
+            sw.WriteLine("newdir = " + "r" + "\"" + maindir + "\"");
             sw.WriteLine("os.chdir(newdir.rstrip())");
            // sw.WriteLine("myfile.close()");
             sw.WriteLine("dirPath = os.getcwd()");
             sw.WriteLine("fileList = os.listdir(dirPath)");
             sw.WriteLine("for fileName in fileList: os.remove(dirPath + \"/\" + fileName)");
 
-            sw.Close();  
+            sw.Close();
+            //Closes StreamWriter
+
+            //Creates Example List Object
+            Estimate.WriteXml("Example", "ExampleList", "123", "IN", "Westfield", "46074", new List<Tuple<string, string, string>>(),true);
+           
+            //Writes CreateRandom.py script.
+            
+            sw = new StreamWriter(newdir + "//CreateRandom.py");
+            sw.WriteLine("from sys import argv");
+            sw.WriteLine("from shutil import copyfile");
+            sw.WriteLine("numberOfFiles = int(argv[1])");
+            sw.WriteLine("newdir = " + "r" + "\"" + maindir + "\"");
+            sw.WriteLine("def WriteXml(name):");
+            sw.WriteLine(indent + "copyfile(\"ExampleList.xml\" , newdir + \"\\\\\"\"\" + name + \".xml\")");
+            sw.WriteLine();
+            sw.WriteLine("for x in xrange(0,numberOfFiles):");
+            sw.WriteLine(indent + "WriteXml(\"example\" + str(x))");
+
+            sw.Close();
+            //Closes StreamWriter
         }
         private void Form1_Load(object sender, EventArgs e)
         {

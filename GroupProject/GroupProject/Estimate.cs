@@ -24,8 +24,13 @@ namespace GroupProject
         /// <param name="state">Client's State</param>
         /// <param name="city">Client's City</param>
         /// <param name="zipCode">Client's Zip Code</param>
-        public static void WriteXml(string firstName, string lastName, string address, string state, string city, string zipCode, List<Tuple<string, string, string>> materialList)
+        public static void WriteXml(string firstName, string lastName, string address, string state, string city, string zipCode, List<Tuple<string, string, string>> materialList, bool debug)
         {
+            var curdir = Directory.GetCurrentDirectory();
+            if (debug)
+            {
+                Directory.SetCurrentDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\DebugTools");
+            }
             XmlWriter xmlWriter = XmlWriter.Create(lastName + ".xml");
             xmlWriter.WriteStartElement("estimate");
             xmlWriter.WriteAttributeString("FirstName", firstName);
@@ -50,6 +55,8 @@ namespace GroupProject
             xmlWriter.Close();
             Console.WriteLine("File was written successfully!");
             Console.ReadLine();
+
+            Directory.SetCurrentDirectory(curdir);
         }
         /// <summary>
         /// Returns an XmlDocument object. 
@@ -59,14 +66,15 @@ namespace GroupProject
         public static XmlDocument ReadXml(string path)
         {
             XmlDocument x = new XmlDocument();
-            if(path == "")
+            if (path == "")
             {
-                path = "nolastname"; 
+                path = "nolastname";
             }
             x.Load(path);
             return x;
         }
     }
+}
     /// <summary>
     /// Used to transfer user data within the code from XML files.
     /// </summary>
@@ -105,9 +113,9 @@ namespace GroupProject
             get { return zipcode; }
         }
         public static BuildingList CurrentBuildingList;
-        public static XmlDocument XmlDoc; 
+        public static XmlDocument XmlDoc;
 
-        public List<Tuple<string,string,string>> MaterialList
+        public List<Tuple<string, string, string>> MaterialList
         {
             get { return materialList; }
         }
@@ -126,14 +134,14 @@ namespace GroupProject
             zipcode = (estimate[0].Attributes.GetNamedItem("ZipCode").Value);
 
             materialList = new List<Tuple<string, string, string>>();
-            for(int i = 0; i < xmlDoc.GetElementsByTagName("MaterialList")[0].ChildNodes.Count; i++)
+            for (int i = 0; i < xmlDoc.GetElementsByTagName("MaterialList")[0].ChildNodes.Count; i++)
             {
                 XmlNodeList ml = xmlDoc.GetElementsByTagName("MaterialList");
-                var name = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Name").Value; 
+                var name = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Name").Value;
                 var price = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Price").Value;
                 var quantity = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Quantity").Value;
 
-                materialList.Add(new Tuple<string, string, string>(name, price, quantity));               
+                materialList.Add(new Tuple<string, string, string>(name, price, quantity));
             }
             SetCurrentBuildingList();
             XmlDoc = xmlDoc;
@@ -144,11 +152,11 @@ namespace GroupProject
         }
         public void AddItemToList(string name, string price, string units)
         {
-            materialList.Add(new Tuple<string, string, string>(name, price, units)); 
+            materialList.Add(new Tuple<string, string, string>(name, price, units));
         }
         public void RemoveItemFromList()
         {
-              
+
         }
         /// <summary>
         /// Prints information gathered by Building List Object. 
@@ -163,7 +171,7 @@ namespace GroupProject
             Console.WriteLine(zipcode + "\n" + "\n");
 
             Console.WriteLine("Material List Items");
-            foreach(Tuple<string,string,string> t in materialList)
+            foreach (Tuple<string, string, string> t in materialList)
             {
                 Console.WriteLine("Name: " + t.Item1);
                 Console.WriteLine("Price: " + t.Item2);
@@ -171,4 +179,4 @@ namespace GroupProject
             }
         }
     }
-}
+

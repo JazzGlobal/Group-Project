@@ -138,7 +138,7 @@ namespace GroupProject
         /// <param name="e"></param>
         private void saveButton_Click(object sender, EventArgs e)
         { 
-            Estimate.WriteXml(buildingList.FirstName,buildingList.LastName,buildingList.Address,buildingList.State,buildingList.City,buildingList.ZipCode,buildingList.MaterialList); 
+            Estimate.WriteXml(buildingList.FirstName,buildingList.LastName,buildingList.Address,buildingList.State,buildingList.City,buildingList.ZipCode,buildingList.MaterialList,false); 
         }
 
         /// <summary>

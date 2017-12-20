@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GroupProject.exe" size="30688">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GroupProject.exe" size="31712">
       <assemblyIdentity name="GroupProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ib6bCIVIQZItP3RfN9kjDN9l401vV4avg0GiMHEIbLQ=</dsig:DigestValue>
+        <dsig:DigestValue>F2tsguyMDr6S2j8HEoYLZ5hDjwc0ooZBxI0MFmpBkJs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

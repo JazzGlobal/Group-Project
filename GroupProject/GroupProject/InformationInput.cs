@@ -39,7 +39,7 @@ namespace GroupProject
             SetVariables();
             List<Tuple<string, string, string>> list = new List<Tuple<string, string, string>>();
         
-            Estimate.WriteXml(firstName, lastName, address, state, city, zipCode, list);
+            Estimate.WriteXml(firstName, lastName, address, state, city, zipCode, list,false);
             Material_List_Builder mlb = new Material_List_Builder(Estimate.ReadXml(lastName + ".xml"));
             mlb.Show(); 
         }
