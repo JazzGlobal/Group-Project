@@ -49,7 +49,6 @@ namespace GroupProject
             xmlWriter.WriteEndElement();
             xmlWriter.Close();
             Console.WriteLine("File was written successfully!");
-            Console.ReadLine();
         }
         /// <summary>
         /// Returns an XmlDocument object. 
@@ -61,6 +60,7 @@ namespace GroupProject
             XmlDocument x = new XmlDocument();
             if(path == "")
             {
+                //Prevents files from having names consisting of only ".xml"
                 path = "nolastname"; 
             }
             x.Load(path);
@@ -104,7 +104,7 @@ namespace GroupProject
         {
             get { return zipcode; }
         }
-        public static BuildingList CurrentBuildingList;
+        public static BuildingList CurrentBuildingList; //Used to display information to form. 
         public static XmlDocument XmlDoc; 
 
         public List<Tuple<string,string,string>> MaterialList
@@ -128,6 +128,7 @@ namespace GroupProject
             materialList = new List<Tuple<string, string, string>>();
             for(int i = 0; i < xmlDoc.GetElementsByTagName("MaterialList")[0].ChildNodes.Count; i++)
             {
+                //Loads information from the MaterialList element to a List<> object. 
                 XmlNodeList ml = xmlDoc.GetElementsByTagName("MaterialList");
                 var name = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Name").Value; 
                 var price = ml[0].ChildNodes.Item(i).Attributes.GetNamedItem("Price").Value;
