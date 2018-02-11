@@ -22,7 +22,6 @@ namespace GroupProject
 
         public LoadingForm(Form1 form)
         {
-
             closing = true; 
             InitializeComponent();
             MaximizeBox = false;
@@ -122,10 +121,6 @@ namespace GroupProject
             }
         }
 
-        private void LoadingForm_Load(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// Closes Application.
         /// </summary>
@@ -137,7 +132,6 @@ namespace GroupProject
                 base.OnFormClosing(e);
                 Application.Exit();
             }
-
         }
 
         /// <summary>
