@@ -13,6 +13,7 @@ namespace GroupProject
     public partial class TotalForm : Form
     {
         Material_List_Builder mlb; 
+        
         public TotalForm(double total,Material_List_Builder mlb)
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace GroupProject
             label1.Text = "The total price of your list is $" + total;
             MaximizeBox = false;
         }
+        
         /// <summary>
         /// Sends user back to previous form. 
         /// </summary>
