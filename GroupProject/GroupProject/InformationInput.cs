@@ -19,7 +19,8 @@ namespace GroupProject
         private string city;
         private string state;
         private string zipCode;
-        bool closing; 
+        bool closing; //Used to close form without exiting application. 
+        
         public InformationInput(Form1 form)
         {
             this.Form = form; 
@@ -28,6 +29,7 @@ namespace GroupProject
             FormBorderStyle = FormBorderStyle.FixedDialog;
             closing = true; 
         }
+        
         /// <summary>
         /// Writes XML Data to file and sends user to Material_List_Builder Form.
         /// </summary>
@@ -60,12 +62,7 @@ namespace GroupProject
             state = stateTextBox.Text;
             zipCode = zipCodeTextBox.Text;
         }
-
-        private void InformationInput_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         /// <summary>
         /// Closes the Application.
         /// </summary>
@@ -78,17 +75,7 @@ namespace GroupProject
                 Application.Exit();
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         /// <summary>
         /// Sends user back to MainForm.
         /// </summary>
