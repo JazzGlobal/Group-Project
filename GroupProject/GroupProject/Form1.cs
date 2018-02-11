@@ -14,7 +14,6 @@ namespace GroupProject
 {
     public partial class Form1 : CustomForm
     {
-
         InformationInput informationInputForm;
         LoadingForm loadingForm; 
 
@@ -26,10 +25,6 @@ namespace GroupProject
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MainForm = this;
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
         /// <summary>
         /// Sends user to InformationInput.cs . 
@@ -48,16 +43,10 @@ namespace GroupProject
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
-        {
-           
+        {        
             Hide();
             loadingForm = new LoadingForm(this);
             loadingForm.Show();            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
