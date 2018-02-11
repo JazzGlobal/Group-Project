@@ -17,17 +17,18 @@ namespace GroupProject
         BuildingList buildingList;
         bool closing;
         double total = 0;
-
-
+        
         public Material_List_Builder(XmlDocument xmlDoc)
         {
             closing = true; 
             InitializeComponent();
             this.xmlDoc = xmlDoc;
-            if (xmlDoc != null)
+            
+            if (xmlDoc == null)
             {
-                Console.WriteLine("Xml Load Completed...");
+                Console.WriteLine("Xml Load Failed...");
             }
+            
             MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             materialListView.GridLines = true;
@@ -42,8 +43,9 @@ namespace GroupProject
                 materialListView.Items[i].SubItems.Add(buildingList.MaterialList[i].Item3);
             }
         }   
+        
         /// <summary>
-        /// Clears and repopulated the listView control.
+        /// Clears and repopulates the ListView control.
         /// </summary>
         private void RefreshItems()
         {
@@ -81,6 +83,7 @@ namespace GroupProject
             //AddItem button
             double x = 0;
             double y = 0; 
+            
             if(nameTextBox.Text != "" && priceTextBox.Text != "" && unitTextBox.Text != "") //Checks to make sure the boxes aren't filled with empty text. 
             {
                 var t = new Tuple<string, string, string>(nameTextBox.Text, priceTextBox.Text, unitTextBox.Text);
@@ -119,15 +122,13 @@ namespace GroupProject
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            //Deletes the selected Material from the list.
-
-            var selecteditems = materialListView.SelectedItems; 
+            var selecteditems = materialListView.SelectedItems;
+            
             if(selecteditems.Count > 0)
             {
                 buildingList.MaterialList.RemoveAt(materialListView.SelectedIndices[0]);
                 materialListView.Items.RemoveAt(materialListView.SelectedIndices[0]);
-                buildingList.PrintInformation(); 
-                
+                buildingList.PrintInformation();              
             }
         }
 
@@ -165,7 +166,6 @@ namespace GroupProject
                 base.OnFormClosing(e);
                 Application.Exit();
             }
-
         }
 
         /// <summary>
@@ -207,11 +207,6 @@ namespace GroupProject
             buildingList.MaterialList.Clear();
             ClearTextBoxes();
             RefreshItems();
-        }
-
-        private void nameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
