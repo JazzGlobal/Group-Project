@@ -10,12 +10,14 @@ namespace GroupProject
     public class CustomForm : Form
     {
         private static Form1 mainForm; 
+        private static CustomForm previousForm;
+
         public static Form1 MainForm
         {
             get { return mainForm; }
             set { mainForm = value; }
         }
-        private static CustomForm previousForm;
+        
         public static CustomForm PreviousForm
         {
             get { return previousForm; }
@@ -31,17 +33,13 @@ namespace GroupProject
             this.Name = "CustomForm";
             this.Load += new System.EventHandler(this.CustomForm_Load);
             this.ResumeLayout(false);
-
         }
 
-        private void CustomForm_Load(object sender, EventArgs e)
-        {
-
-        }
         public static void SetPreviousForm(CustomForm pCustomForm)
         {
             previousForm = pCustomForm; 
         }
+        
         public static void SetFormDimensions(CustomForm pCustomForm)
         {
             pCustomForm.StartPosition = FormStartPosition.Manual;
